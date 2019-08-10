@@ -8,23 +8,27 @@ import {signInWithGoogle} from "../../firebase/utility";
 import './sign-in.styles.scss';
 
 class SignIn extends React.Component{
+constructor(props) {
+    super(props);
 
-    state = {
+    this.state = {
         email: '',
         password: ''
-    }
+    };
+}
+
 
     handleSubmit = event => {
         event.preventDefault();
 
         this.setState({email: '', password: ''});
-    }
+    };
 
     handleChange = event => {
         const { value, name} = event.target;
 
         this.setState({ [name]: value })
-    }
+    };
 
     render() {
         return(
@@ -49,8 +53,12 @@ class SignIn extends React.Component{
                         label='password'
                         required
                     />
-                    <CustomButton type='submit'>Sign In</CustomButton>
-                    <CustomButton onClick={signInWithGoogle}>{' '}Sign In With Google{' '}</CustomButton>
+                    <div className='buttons'>
+                        <CustomButton type='submit'>Sign In</CustomButton>
+                        <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+                            Sign In With Google
+                        </CustomButton>
+                    </div>
                 </form>
             </div>
         )
