@@ -11,33 +11,35 @@ import {selectCurrentUser} from '../../redux/user/user.selectors';
 
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionDiv, OptionLink} from "./header.styles";
+
 import './header.styles.scss';
 
 const Header = ({currentUser, hidden}) => (
-    <div className='header'>
-        <Link className='logo-container' to='/'>
+    <HeaderContainer>
+        <LogoContainer to='/'>
             <Logo className='logo'/>
-        </Link>
-        <div className='options'>
-            <Link className='option' to='/shop'>
+        </LogoContainer>
+        <OptionsContainer className='options'>
+            <OptionLink className='option' to='/shop'>
                 SHOP
-            </Link>
-            <Link className='option' to='/shop'>
+            </OptionLink>
+            <OptionLink className='option' to='/shop'>
                 CONTACT
-            </Link>
+            </OptionLink>
             {currentUser ? (
-                    <div className='option' onClick={() => auth.signOut()}>
+                    <OptionDiv className='option' onClick={() => auth.signOut()}>
                         SIGN OUT
-                    </div>
+                    </OptionDiv>
                     ) : (
-                    <Link className='option' to='/signin'>
+                    <OptionDiv className='option' to='/signin'>
                         SIGN IN
-                    </Link>
+                    </OptionDiv>
                 )}
                 <CartIcon/>
-        </div>
+        </OptionsContainer>
         {hidden ? null : <CartDropdown/>}
-    </div>
+    </HeaderContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
