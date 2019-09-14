@@ -17,7 +17,6 @@ constructor(props) {
     };
 }
 
-
     handleSubmit = async event => {
         event.preventDefault();
 
@@ -29,8 +28,6 @@ constructor(props) {
         } catch (error) {
             console.log(error);
         }
-
-        this.setState({email: '', password: ''});
     };
 
     handleChange = event => {
@@ -72,7 +69,6 @@ constructor(props) {
             </div>
         )
     }
-
 }
 
 export default SignIn;
